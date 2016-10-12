@@ -1,0 +1,26 @@
+{
+  "name": "web-tt",
+  "version": "1.0.0",
+  "description": "tt",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelromerogutierrez/web-tt.git"
+  },
+  "keywords": [
+    "tt",
+    "escom"
+  ],
+  "author": "b074",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguelromerogutierrez/web-tt/issues"
+  },
+  "homepage": "https://github.com/miguelromerogutierrez/web-tt#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
