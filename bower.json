@@ -1,0 +1,29 @@
+{
+  "name": "alert-amber-tt",
+  "authors": [
+    "Escom"
+  ],
+  "description": "tesis project",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "amber",
+    "tt",
+    "tesis"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "bootstrap": "~3.3.7",
+    "angular": "~1.5.8"
+  }
+}
