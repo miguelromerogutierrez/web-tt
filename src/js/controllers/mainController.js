@@ -2,15 +2,12 @@
 	
 	'use strict';
 
-	function MainController ($scope, BulletinService) {
+	function MainController ($scope, Bulletins) {
+		$scope.bulletins = Bulletins;
 		
-		BulletinService.getBulletins().
-		then(function  (data) {
-			console.log(data);
-		});
 	}
 
 	angular.module('alertAmberTT')
-	.controller('MainController', ['$scope','BulletinService', MainController]);
+	.controller('MainController', ['$scope','Bulletins', MainController]);
 
 }());

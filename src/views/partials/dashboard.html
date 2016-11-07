@@ -1,0 +1,14 @@
+<table class="table">
+	<tr>
+		<th>Código</th>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Fecha de los hechos</th>
+	</tr>
+	<tr ng-repeat="bulletin in bulletins">
+		<td>{{bulletin.bulletinDto.bulletinCode}}</td>
+		<td>{{bulletin.bulletinDto.name}}</td>
+		<td>{{bulletin.bulletinDto.lastName + bulletins.secondLastName}}</td>
+		<td>{{bulletin.bulletinDto.factsDate}}</td>
+	</tr>
+</table>

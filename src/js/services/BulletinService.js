@@ -4,9 +4,11 @@
 
 	function BulletinService ($http, $q) {
 		
-		var uri = "http://192.168.0.23:8080/AlertAmberTT/api/bulletins";
+		var uri = AppConfig.host + "/api/bulletins/list";
 
-		this.getBulletins = function  () {
+		this.getBulletins = getBulletins;
+		
+		function getBulletins () {
 			return $http.get(uri)
 					 .then(function  (resp) {
 					 	return resp.data;
@@ -14,7 +16,7 @@
 					 	console.error('Error fetching bullets');
 					 	return $q.reject(err)
 					 });
-		};
+		}
 
 	}
 
