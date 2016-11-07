@@ -1,7 +1,7 @@
 
 var express = require('express');
 var app = express();
-var watson = require('watson-developer-cloud');
+// var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 
 
 // configuration ===========================================
@@ -16,11 +16,10 @@ app.get('*', function(req, res, next) {
 	});
 });
 
-var visual_recognition = watson.visual_recognition({
-  api_key: '7de1e5ad54445dbe9ed14e310b7665256dc3d4ae',
-  version_date: '2016-05-20'
-});
-
+// var visual_recognition = new VisualRecognitionV3({
+//   api_key: '7de1e5ad54445dbe9ed14e310b7665256dc3d4ae',
+//   version_date: '2016-05-20'
+// });
 
 app.listen(8000, function () {
 });
