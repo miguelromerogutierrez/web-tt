@@ -2,8 +2,28 @@
 <html>
 <head>
 	<title>Alerta Amber</title>
+	<link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="/libs/angular-bootstrap/ui-bootstrap-csp.css">
+	
 </head>
-<body>
-	<h1>Alerta Amber !!</h1>
+<body ng-app="alertAmberTT">
+	<h1>Alerta Amber B074</h1>
+
+	<div class="container">
+		<div ui-view></div>
+	</div>
+
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="libs/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="js/config.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/app.routes.js"></script>
+	<script src="js/controllers/mainController.js"></script>
+	<script src="js/services/BulletinService.js"></script>
 </body>
 </html>

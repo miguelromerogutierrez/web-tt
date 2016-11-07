@@ -2,5 +2,8 @@
 
 	'use strict';
 
-	angular.module('alertAmberTT',[])
+	angular.module('alertAmberTT',[
+		'ui.router',
+		'ui.bootstrap'
+	]);
 }());
