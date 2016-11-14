@@ -5,25 +5,74 @@
 	<link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="/libs/angular-bootstrap/ui-bootstrap-csp.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 	
 </head>
 <body ng-app="alertAmberTT">
-	<h1>Alerta Amber B074</h1>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<a class="navbar-brand" ui-sref="home()">Alerta Amber B074</a>
+			</div>
+
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li ><a ui-sref="findRegister()">Buscar Registro</a></li>
+					<li><a ui-sref="#">Personas Desaparecidas</a></li>
+					<li><a ui-sref="addPoliceofficer()">Agregar Oficial</a></li>
+				</ul>
+<!-- 				<form class="navbar-form navbar-left">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form> -->
+				<!-- <ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul> -->
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
 
 	<div class="container">
 		<div ui-view></div>
 	</div>
-
 	<script src="libs/angular/angular.min.js"></script>
+	<script src="http://cdn.rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js" type="text/javascript"></script>
 	<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="libs/angular-bootstrap/ui-bootstrap.min.js"></script>
 	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	<script src="libs/jquery/dist/jquery.min.js"></script>
 	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="libs/angular-google-maps.min.js"></script>
+	<script src="libs/vsGoogleAutocomplete/dist/vs-google-autocomplete.min.js"></script>
+	<script src="libs/vsGoogleAutocomplete/dist/vs-autocomplete-validator.min.js"></script>
 	<script src="js/config.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/app.routes.js"></script>
 	<script src="js/controllers/mainController.js"></script>
+	<script src="js/controllers/find-register.controller.js"></script>
+	<script src="js/controllers/bulletin.controller.js"></script>
+	<script src="js/controllers/add-police.controller.js"></script>
+	<script src="js/controllers/assign-officer.controller.js"></script>
+	<script src="js/controllers/list-officers.controller.js"></script>
 	<script src="js/services/BulletinService.js"></script>
+	<script src="js/services/FlowServices.js"></script>
+	<script src="js/services/OfficerService.js"></script>
 </body>
 </html>

@@ -9,6 +9,6 @@
 		<td>{{bulletin.bulletinDto.bulletinCode}}</td>
 		<td>{{bulletin.bulletinDto.name}}</td>
 		<td>{{bulletin.bulletinDto.lastName + bulletins.secondLastName}}</td>
-		<td>{{bulletin.bulletinDto.factsDate}}</td>
+		<td>{{bulletin.bulletinDto.factsDate | date : 'yyyy/MM/dd'}}</td>
 	</tr>
 </table>

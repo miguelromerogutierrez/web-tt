@@ -4,20 +4,29 @@
 
 	function BulletinService ($http, $q) {
 		
-		var uri = AppConfig.host + "/api/bulletins/list";
+		var BASE_URL = AppConfig.host + "/api/bulletins";
+
+		var GET_BULLETINS = BASE_URL + "/list";
+		var GET_BULLETIN_BY_CURP = BASE_URL + "/find";
 
 		this.getBulletins = getBulletins;
+		this.getBulletinByCurp = getBulletinByCurp;
 		
 		function getBulletins () {
-			return $http.get(uri)
+			return $http.get(GET_BULLETINS)
 					 .then(function  (resp) {
 					 	return resp.data;
 					 }, function  (err) {
-					 	console.error('Error fetching bullets');
-					 	return $q.reject(err)
+					 	return $q.reject(err);
 					 });
 		}
 
+		function getBulletinByCurp (curp) {
+			return $http.get(GET_BULLETIN_BY_CURP + "?curp=" + curp)
+				.then(function(resp) {
+					return resp.data;
+				});
+		}
 	}
 
 	angular.module('alertAmberTT')

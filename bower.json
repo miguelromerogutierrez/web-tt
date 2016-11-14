@@ -25,5 +25,9 @@
     "angular": "~1.5.8",
     "bootstrap": "~3.3.7",
     "angular-ui-router": "~0.3.1"
+  },
+  "devDependencies": {
+    "vsGoogleAutocomplete": "vs-google-autocomplete#~0.5.0",
+    "angular-google-maps": "~2.4.0"
   }
 }
