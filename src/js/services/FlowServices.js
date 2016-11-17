@@ -9,6 +9,7 @@
 		var ACTIVATE_BULLETIN = BASE_URL + '/activar';
 		var GET_DEVICE_POS = BASE_URL + '/device/position';
 
+
 		this.activateBulletin = activateBulletin;
 		this.getDevicePosition = getDevicePosition;
 		this.activateDevice = activateDevice;
@@ -28,8 +29,10 @@
 			});
 		}
 
-		function activateDevice () {
-			return $http.get(ACTIVATE_DEVICE);
+		function activateDevice (device) {
+			return $http.get(ACTIVATE_DEVICE + '/' + device).then(function(resp) {
+				return resp.data;
+			});
 		}
 	}
 

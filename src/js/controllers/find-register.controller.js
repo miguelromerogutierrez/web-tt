@@ -8,9 +8,12 @@
 		$scope.register = null;
 		$scope.find = find;
 		$scope.activate = activate;
+		$scope.device = false;
 		$scope.map = getMapProperties();
-		$scope.missing = getMissing();
-		$scope.markers = getMarkers();
+		// $scope.missing = getMissing();
+		// $scope.markers = getMarkers();
+		$scope.missing = {};
+		$scope.officials = {};
 		$scope.assignOfficer = assignOfficer;
 		$scope.activateDevice = activateDevice;
 		$scope.options = {
@@ -35,15 +38,27 @@
 		}
 
 		function activateDevice () {
-			FlowService.activateDevice()
-			.then(function(resp) {
+			FlowService.activateDevice(bulletinDto.device)
+			// .then(function(resp) {
+			// 	return FlowService.getDevicePosition({
+			// 		serial: bulletinDto.device
+			// 	});
+			// })
+			.then(function(place) {
+				$scope.missing = getMissing(place);
+				$scope.map.center = {
+					latitude: place.latitude,
+					longitude: place.longitue
+				};
 				return OfficerService.getListOfficers({
 					latitude: 19.3206553,
 					longitude: -99.1526775
 				});
 			})
 			.then(function(listOfficers) {
-				
+				$scope.officials = getMarkers(listOfficers.listOfficersDto);
+				$scope.device = true;
+				console.log(JSON.stringify($scope.officials));
 			});
 		}
 
@@ -68,56 +83,34 @@
 			// });
 		}
 
-		function getMissing () {
+		function getMissing (place) {
 			return {
 				id: 1,
 				coords: {
-					latitude: 19.3206553,
-					longitude: -99.1526775
+					latitude: place.latitude,
+					longitude: place.longitue
 				},
 				click: undefined
 			}
 		}
 
-		function getMarkers () {
+		function getMarkers (listOfficers) {
+			var markers = [];
+			listOfficers.forEach(function(official,index) {
+				markers.push({
+					id: index + 1,
+					coords: {
+						latitude: official.place.latitude,
+						longitude: official.place.longitue
+					},
+					icon: 'images/police-icon.png',
+					officer: official
+				});
+			});
 			return {
-				list: [
-					{
-						id: 2,
-						coords: {
-							latitude: 19.3231832,
-							longitude: -99.1524357
-						},
-						icon: 'images/map-marker(1).png',
-						officer: {
-							name: 'Marco'
-						}
-					},
-					{
-						id: 3,
-						coords: {
-							latitude: 19.3204882,
-							longitude: -99.1479862
-						},
-						icon: 'images/map-marker(1).png',
-						officer: {
-							name: 'Luis'
-						}
-					},
-					{
-						id: 4,
-						coords: {
-							latitude: 19.3215108,
-							longitude: -99.1502929
-						},
-						icon: 'images/map-marker(1).png',
-						officer: {
-							name: 'Paco'
-						}
-					}
-				],
-				control : {}
-			};
+				list: markers,
+				control: {}
+				};
 		}
 
 		function getMapProperties() {
@@ -141,7 +134,7 @@
 		      size: 'sm',
 		      resolve: {
 		        officer: function () {
-		          return $scope.items;
+		          return marker.officer;
 		        }
 		      }
 		    });

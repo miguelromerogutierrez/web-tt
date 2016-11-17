@@ -11,5 +11,5 @@
 	}
 
 	angular.module('alertAmberTT')
-	.controller('AssignOfficerCtrl', ['$scope', '$uibModalInstance', AssignOfficerCtrl]);
+	.controller('AssignOfficerCtrl', ['$scope', '$uibModalInstance', 'officer', AssignOfficerCtrl]);
 }());

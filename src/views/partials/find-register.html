@@ -31,7 +31,7 @@
 		<button class="btn btn-primary" ng-click="activateDevice()">Activar dispositivo</button>
 	</div>
 
-	<div ng-if="register">
+	<div ng-if="device">
 		<ui-gmap-google-map center='map.center'
                     control='map.control'
                     zoom='map.zoom'
@@ -39,11 +39,11 @@
                     refresh='map.refresh'
         >
  	        <ui-gmap-markers
-	        	models = "markers.list"
+	        	models = "officials.list"
 	        	coords = "'coords'"
 	        	icon = "'icon'"
 	        	click = "assignOfficer"
-	        	control = "markers.control"
+	        	control = "officials.control"
 	        > 
 			</ui-gmap-markers>
 			<ui-gmap-marker
