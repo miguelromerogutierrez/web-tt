@@ -86,4 +86,8 @@
 	<div class="form-group" ng-if="register">
 		<button class="btn btn-default" ng-click="activate()">Activar Alerta</button>
 	</div>
+	<div class="alert alert-success alert-dismissible" role="alert" ng-show="activated">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>Alerta Activada</strong>
+	</div>
 </form>

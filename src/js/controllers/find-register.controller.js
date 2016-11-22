@@ -4,14 +4,16 @@
 
 	function FindRegisterCtrl ($scope, BulletinService, FlowService, OfficerService, $uibModal) {
 		var bulletinDto = null;
+		var officerAssigned = null;
+		var missingPersonPlace = {};
 
+		$scope.factDate = new Date();
+		$scope.activated = false;
 		$scope.register = null;
 		$scope.find = find;
 		$scope.activate = activate;
 		$scope.device = false;
 		$scope.map = getMapProperties();
-		// $scope.missing = getMissing();
-		// $scope.markers = getMarkers();
 		$scope.missing = {};
 		$scope.officials = {};
 		$scope.assignOfficer = assignOfficer;
@@ -39,13 +41,9 @@
 
 		function activateDevice () {
 			FlowService.activateDevice(bulletinDto.device)
-			// .then(function(resp) {
-			// 	return FlowService.getDevicePosition({
-			// 		serial: bulletinDto.device
-			// 	});
-			// })
 			.then(function(place) {
 				$scope.missing = getMissing(place);
+				missingPersonPlace = place;
 				$scope.map.center = {
 					latitude: place.latitude,
 					longitude: place.longitue
@@ -75,12 +73,14 @@
 		}
 
 		function activate () {
-			// FlowService.activateBulletin({
-			// 	bulletin: bulletinDto.bulletinCode,
-			// 	officer: 
-			// 	place:
-			// 	dateFacts:
-			// });
+			FlowService.activateBulletin({
+				bulletinCode: bulletinDto.bulletinCode,
+				policeId: officerAssigned.id,
+				place: missingPersonPlace,
+				dateFacts: $scope.factDate.getTime()
+			}).then(function() {
+				$scope.activated = true;
+			});
 		}
 
 		function getMissing (place) {
@@ -142,7 +142,7 @@
 		    modalInstance.result
 		    .then(function(flag) {
 		    	if (flag) {
-
+		    		officerAssigned = marker.officer;
 		    	}
 		    });
 		}
