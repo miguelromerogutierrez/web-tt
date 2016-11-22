@@ -17,11 +17,10 @@ app.use('/libs', express.static(__dirname + '/bower_components'));
 app.get('/activate/device/:serial', function(req, response, next) {
 	console.log('servicio de sms');
 	var options = {
-	  host: '10.0.0.4',
+	  host: '104.154.249.88',
 	  port: 8080,
 	  path: '/AlertAmberTT/api/flow/device/position?serial='+req.params.serial
 	};
-	setTimeout(request, 10000)
 
 	function request () {
 		http.get(options, function(res) {
@@ -38,11 +37,13 @@ app.get('/activate/device/:serial', function(req, response, next) {
 		  });
 		});
 	}
-	// clientTwilio.sendMessage({
-	// 	to: '+525559951112',
-	// 	from: '+14436663381',
-	// 	body: 'ACTIVAR'
-	// });
+	clientTwilio.sendMessage({
+		to: '+525576321427',
+		from: '+14436663381',
+		body: 'ACTIVAR'
+	});
+
+	setTimeout(request, 15000);
 });
 
 app.get('*', function(req, res, next) {
