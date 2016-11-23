@@ -75,7 +75,7 @@
 		function activate () {
 			FlowService.activateBulletin({
 				bulletinCode: bulletinDto.bulletinCode,
-				policeId: officerAssigned.id,
+				policeId: officerAssigned.idOfficer,
 				place: missingPersonPlace,
 				dateFacts: $scope.factDate.getTime()
 			}).then(function() {
