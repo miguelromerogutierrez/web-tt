@@ -2,7 +2,7 @@
 	
 	'use strict';
 
-	function FindRegisterCtrl ($scope, BulletinService, FlowService, OfficerService, $uibModal) {
+	function FindRegisterCtrl ($scope, BulletinService, FlowService, OfficerService, $uibModal, $timeout) {
 		var bulletinDto = null;
 		var officerAssigned = null;
 		var missingPersonPlace = {};
@@ -57,6 +57,29 @@
 				$scope.officials = getMarkers(listOfficers.listOfficersDto);
 				$scope.device = true;
 				console.log(JSON.stringify($scope.officials));
+				recurrent();
+			});
+		}
+
+		function recurrent () {
+			FlowService.getDevicePosition({
+				serial: bulletinDto.device
+			}).then(function(place) {
+				$scope.missing = getMissing(place);
+				missingPersonPlace = place;
+				$scope.map.center = {
+					latitude: place.latitude,
+					longitude: place.longitue
+				};
+				return OfficerService.getListOfficers({
+					latitude: 19.3206553,
+					longitude: -99.1526775
+				});
+			}).then(function(listOfficers) {
+				$scope.officials = getMarkers(listOfficers.listOfficersDto);
+				$scope.device = true;
+				console.log(JSON.stringify($scope.officials));
+				$timeout(recurrent,5000);
 			});
 		}
 
