@@ -172,6 +172,6 @@
 	}
 
 	angular.module('alertAmberTT')
-	.controller('FindRegisterCtrl', ['$scope','BulletinService', 'FlowService', 'OfficerService', '$uibModal', FindRegisterCtrl]);
+	.controller('FindRegisterCtrl', ['$scope','BulletinService', 'FlowService', 'OfficerService', '$uibModal','$timeout', FindRegisterCtrl]);
 
 }());
